@@ -1,0 +1,21 @@
+{
+  "name": "chat_app_web_testing_playwright",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:each": "npx playwright test tests/example.spec.ts  --reporter=html:playwright-report/example.html && npx playwright test tests/demo-todo-app.spec.ts  --reporter=html:playwright-report/demo-todo-app.html",
+    "test:debug": "npx playwright test --debug",
+    "test:ui": "npx playwright test --ui",
+    "test:headed": "npm run test -- --headed",
+    "report:open": "npx playwright show-report"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.43.1",
+    "@types/node": "^20.12.7"
+  }
+}
