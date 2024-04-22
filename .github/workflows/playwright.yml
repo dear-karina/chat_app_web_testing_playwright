@@ -28,16 +28,10 @@ jobs:
       - name: Commit changed files
         run: |
           git add .
-          git commit -m "Auto-update report."
+          git commit -m "Auto-update report"
       - name: Push to master
         env:
           TOKEN: ${{ secrets.TOKEN }}
         run: |
           git remote set-url origin https://github.com/${{ github.repository }}.git
           git push origin HEAD:main
-      - uses: actions/upload-artifact@v4
-        if: always()
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 30
