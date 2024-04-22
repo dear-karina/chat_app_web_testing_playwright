@@ -21,6 +21,8 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run Playwright tests
         run: npx playwright test
+      - name: Move the index file
+        run: cp playwright-report/index.html index.html
       - name: Configure Git
         run: |
           git config --global user.email "karinavu.january@gmail.com"
