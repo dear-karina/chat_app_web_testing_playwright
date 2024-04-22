@@ -5,7 +5,6 @@
   "main": "index.js",
   "scripts": {
     "test": "npx playwright test",
-    "test:each": "npx playwright test tests/example.spec.ts  --reporter=html:playwright-report/example.html && npx playwright test tests/demo-todo-app.spec.ts  --reporter=html:playwright-report/demo-todo-app.html",
     "test:debug": "npx playwright test --debug",
     "test:ui": "npx playwright test --ui",
     "test:headed": "npm run test -- --headed",
