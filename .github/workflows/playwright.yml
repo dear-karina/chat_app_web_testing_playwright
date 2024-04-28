@@ -1,7 +1,7 @@
 name: Playwright Tests
 on:
   repository_dispatch:
-    types: [test_result]
+    types: [run-test]
   # push:
   #   branches: [main, master]
   # pull_request:
@@ -21,7 +21,7 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run Playwright tests
         run: npx playwright test
-      - name: Move the index file
+      - name: Copy the index file
         run: cp playwright-report/index.html index.html
       - name: Configure Git
         run: |

@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "codegen": "npx playwright codegen",
     "test": "npx playwright test",
     "test:debug": "npx playwright test --debug",
     "test:ui": "npx playwright test --ui",
