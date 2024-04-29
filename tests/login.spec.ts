@@ -1,6 +1,6 @@
 import { test, expect } from '../fixtures/page.fixture';
 import { ChatAppEndpoints } from '../constants/endpoints';
-import { negativeTests, positiveTest } from '../data/login_data';
+import { negativeTests, positiveTest } from '../data/login.data';
 
 
 test.beforeEach(async ({ page }) => {

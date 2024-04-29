@@ -10,6 +10,7 @@
     "test:ui": "npx playwright test --ui",
     "test:headed": "npm run test -- --headed",
     "test-chat": "npm run test chat.spec.ts --debug",
+    "test-search": "npm run test search_user.spec.ts --debug",
     "report:open": "npx playwright show-report",
     "serve": "node server.js"
   },
