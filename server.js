@@ -1,12 +1,12 @@
-const express = require('express');
+const express = require("express");
 const app = express();
-const path = require('path');
+const path = require("path");
 
-app.get('/', (req, res) => {
-  const filePath = path.join(__dirname, 'playwright-report', 'index.html');
+app.get("/", (req, res) => {
+  const filePath = path.join(__dirname, "playwright-report", "index.html");
   res.sendFile(filePath);
 });
 // change to 80 to expose through HTTP
 app.listen(8080, () => {
-  console.log('Server running on port 8080');
+  console.log("Server running on port 8080");
 });
