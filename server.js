@@ -7,6 +7,6 @@ app.get("/", (req, res) => {
   res.sendFile(filePath);
 });
 // change to 80 to expose through HTTP
-app.listen(8080, () => {
-  console.log("Server running on port 8080");
+app.listen(80, () => {
+  console.log("Server running on port 80");
 });
