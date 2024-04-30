@@ -1,57 +1,72 @@
-import { test, expect, Page, BrowserContext, chromium, firefox } from '@playwright/test';
-import {randomMessage} from '../ultils/generate'
-import { ChatAppEndpoints } from '../commons/endpoints';
+import { chromium, firefox } from "@playwright/test";
+import { test } from "../fixtures/page.fixture";
+import { randomMessage } from "../ultils/generate";
+import { ChatAppEndpoints } from "../constants/endpoints";
+import { createPageWithLoginAndHome } from "../fixtures/page.fixture";
 
-test('chat',{ tag: ['@chat', '@postitive'] }, async()=>{
-    // Create contexts for account A and account B
-    const browserA= await chromium.launch()
-    const contextA = await browserA.newContext()
-    const browserB= await firefox.launch()
-    const contextB = await browserB.newContext()
+test(
+  "chat between 2 accounts, one with Chrome and one with Firefox",
+  { tag: ["@chat", "@positive"] },
+  async () => {
+    test.setTimeout(60000);
+    // Launch Chromium and Firefox browsers
+    const browserA = await chromium.launch();
+    const contextA = await browserA.newContext();
+    const browserB = await firefox.launch();
+    const contextB = await browserB.newContext();
 
-    // Create pages within each context
-    const pageA = await contextA.newPage();
-    const pageB = await contextB.newPage();
+    // Create pages with login and home injected
+    const {
+      page: pageA,
+      loginPage: loginPageA,
+      homePage: homePageA,
+    } = await createPageWithLoginAndHome(contextA);
+    const {
+      page: pageB,
+      loginPage: loginPageB,
+      homePage: homePageB,
+    } = await createPageWithLoginAndHome(contextB);
 
     // Navigate to the website for both pages
     await Promise.all([
-        pageA.goto(ChatAppEndpoints.HOME),
-        pageB.goto(ChatAppEndpoints.HOME)
+      pageA.goto(ChatAppEndpoints.HOME),
+      pageB.goto(ChatAppEndpoints.HOME),
     ]);
+    const accountA_name = "hongducdev";
+    const accountB_name = "khavyhana";
 
-    // Login to account A and account B in parallel
+    // Login
+    await loginPageA.login(accountA_name, "123456");
+    await loginPageB.login(accountB_name, "123456");
+    // Open dialogs
+    await homePageA.search(accountB_name);
+    //currently the web search by name, not username
+    // await homePageB.search(accountB_name);
+    await homePageB.search("Nguyen Hong Duc");
+
+    // Send messages
+    const randomMessageFromA = randomMessage();
+    const randomMessageFromB = randomMessage();
+    await homePageA.sendMessage(randomMessageFromA, "send-button");
+    await homePageB.sendMessage(randomMessageFromB, "ENTER");
+
+    //Take screenshot here
+    // await new Promise((resolve) => setTimeout(resolve, 1000));
+    // console.log(`hongduc: ${randomMessageFromA}`);
+    // console.log(`khavy: ${randomMessageFromB}`);
+    // await pageA.screenshot({ path: "playwright-report/screenshots/screenshotA.png" });
+    // await pageB.screenshot({ path: "playwright-report/screenshots/screenshotB.png" });
+
+    // Check if account B receives the message sent by account A
+    await homePageB.assertMessageVisible(randomMessageFromA);
+    await homePageA.assertMessageVisible(randomMessageFromB);
+
+    //Close all resources
     await Promise.all([
-        login(pageA,"hongducdev", "123456"),
-        login(pageB,"khavyhana", "123456"),
+      contextA.close(),
+      contextB.close(),
+      browserA.close(),
+      browserB.close(),
     ]);
-
-    // Send a message from account A to account B
-    await pageA.getByText("khavyhana").first().click();
-    const randomMessageFromA=randomMessage()
-    await pageA.locator('#message').fill(randomMessageFromA);
-    await pageA.locator('#message').press('Enter');
-
-    //Check if account B receive the message sent by account A
-    await pageB.getByText("Nguyen Hong Duc").first().click();
-    await expect(pageB.getByText(randomMessageFromA)).toBeVisible();
-
-    // Send a message from account B to account A
-    const randomMessageFromB=randomMessage()
-    await pageB.locator('#message').fill(randomMessageFromB);
-    await pageB.locator('#send').click();
-
-    //Check if account B receive the message sent by account A
-    await expect(pageA.getByText(randomMessageFromB)).toBeVisible();
-    await Promise.all([
-        contextA.close(),
-        contextB.close(),
-        browserA.close(),
-        browserB.close(),
-      ]);
-})
-
-const login = async (page: Page, username: string, password: string): Promise<void> => {
-    await page.getByPlaceholder('Enter your username').fill(username);
-    await page.getByPlaceholder('Enter your password').fill(password);
-    await page.getByRole('button', { name: 'Login' }).click();
-  };
+  }
+);
