@@ -14,7 +14,7 @@
     "test-chat": "npx playwright test chat.spec.ts --headed",
     "test-search": "npx playwright test search_user.spec.ts --debug",
     "report:open": "npx playwright show-report",
-    "serve": "node server.js"
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
