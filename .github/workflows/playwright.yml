@@ -2,6 +2,7 @@ name: Playwright Tests
 on:
   repository_dispatch:
     types: [run-test]
+  workflow_dispatch:
   # push:
   #   branches: [main, master]
   # pull_request:
@@ -21,19 +22,19 @@ jobs:
         run: npx playwright install --with-deps
       - name: Run Playwright tests
         run: npx playwright test
-      - name: Copy the index file
-        run: cp playwright-report/index.html index.html
-      - name: Configure Git
-        run: |
-          git config --global user.email "karinavu.january@gmail.com"
-          git config --global user.name "Karina's Bot"
-      - name: Commit changed files
-        run: |
-          git add .
-          git commit -m "Auto-update report"
-      - name: Push to master
-        env:
-          TOKEN: ${{ secrets.TOKEN }}
-        run: |
-          git remote set-url origin https://github.com/${{ github.repository }}.git
-          git push origin HEAD:main
+      # - name: Copy the index file
+      #   run: cp playwright-report/index.html index.html
+      # - name: Configure Git
+      #   run: |
+      #     git config --global user.email "karinavu.january@gmail.com"
+      #     git config --global user.name "Karina's Bot"
+      # - name: Commit changed files
+      #   run: |
+      #     git add .
+      #     git commit -m "Auto-update report"
+      # - name: Push to master
+      #   env:
+      #     TOKEN: ${{ secrets.TOKEN }}
+      #   run: |
+      #     git remote set-url origin https://github.com/${{ github.repository }}.git
+      #     git push origin HEAD:main
