@@ -9,7 +9,7 @@
     "test:debug": "npx playwright test --debug",
     "test:ui": "npx playwright test --ui",
     "test:headed": "npx playwright test -- --headed",
-    "test-login": "npx playwright test login.spec.ts --debug",
+    "test-login": "npx playwright test login.spec.ts",
     "test-signup": "npx playwright test signup.spec.ts --debug",
     "test-chat": "npx playwright test chat.spec.ts --headed",
     "test-search": "npx playwright test search_user.spec.ts --debug",

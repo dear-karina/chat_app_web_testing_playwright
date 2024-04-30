@@ -7,6 +7,12 @@ case "$1" in
         cd /home/ubuntu/repo/chat_app_web_testing_playwright 
         npm run test
         ;;
+    "test-login")
+        # run the tests
+        echo "TestMachine is running the tests...."
+        cd /home/ubuntu/repo/chat_app_web_testing_playwright 
+        npm run test-login
+        ;;
     "connect")
         # test ssh connection
         echo "TestMachine is connecting..."
