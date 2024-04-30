@@ -9,6 +9,8 @@
     "test:debug": "npx playwright test --debug",
     "test:ui": "npx playwright test --ui",
     "test:headed": "npm run test -- --headed",
+    "test-login": "npm run test login.spec.ts --debug",
+    "test-signup": "npm run test signup.spec.ts --debug",
     "test-chat": "npm run test chat.spec.ts --debug",
     "test-search": "npm run test search_user.spec.ts --debug",
     "report:open": "npx playwright show-report",

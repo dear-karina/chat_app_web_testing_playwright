@@ -5,7 +5,7 @@ export const randomFullname = (): string => {
 };
 const timestampInMillis: string = Date.now().toString();
 export const randomUsername = (base?: string): string => {
-  if (base !== undefined) {
+  if (base === undefined) {
     return faker.internet.userName();
   }
   return `${base}_${timestampInMillis}`;

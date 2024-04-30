@@ -3,4 +3,5 @@ export const loginLocator = {
   PASSWORD_TEXT_BOX: "#password",
   LOGIN_BUTTON: "#login",
   ERROR_MESSAGE_TEXT: "div[role='status']",
+  //sign up link text is selected by text
 };

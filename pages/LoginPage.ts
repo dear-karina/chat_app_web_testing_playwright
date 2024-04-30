@@ -19,6 +19,9 @@ export class LoginPage {
   get loginButton(): Locator {
     return this.page.locator(loginLocator.LOGIN_BUTTON);
   }
+  get signupLink(): Locator {
+    return this.page.getByRole("link", { name: "Sign up" });
+  }
   async typeUsername(username: string) {
     await this.usernameTextBox.fill(username);
   }
@@ -29,6 +32,9 @@ export class LoginPage {
 
   async clickLoginButton() {
     await this.loginButton.click();
+  }
+  async clickSignupLink() {
+    await this.signupLink.click();
   }
 
   public async goto() {
