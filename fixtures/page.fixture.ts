@@ -1,7 +1,8 @@
-import { test as base } from "@playwright/test";
+import { test as base, BrowserContext } from "@playwright/test";
 import { LoginPage } from "../pages/LoginPage";
 import { HomePage } from "../pages/HomePage";
 import { SignupPage } from "../pages/SignupPage";
+
 type PageFixture = {
   loginPage: LoginPage;
   signupPage: SignupPage;
@@ -19,5 +20,12 @@ export const test = base.extend<PageFixture>({
     await use(new HomePage(page));
   },
 });
+
+export const createPageWithLoginAndHome = async (context: BrowserContext) => {
+  const page = await context.newPage();
+  const loginPage = new LoginPage(page);
+  const homePage = new HomePage(page);
+  return { page, loginPage, homePage };
+};
 
 export { expect } from "@playwright/test";
