@@ -1,4 +1,4 @@
-const SOURCE = "http://localhost:4953";
+const SOURCE = "https://chatapppreview.hongduccodedao.id.vn";
 
 export const ChatAppEndpoints = {
   LOGIN: `${SOURCE}/login`,
