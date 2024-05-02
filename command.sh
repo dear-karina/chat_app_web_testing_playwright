@@ -13,6 +13,12 @@ case "$1" in
         cd /home/ubuntu/repo/chat_app_web_testing_playwright 
         npm run test-login
         ;;
+    "show-report")
+        # run the tests
+        echo "TestMachine is running the tests...."
+        cd /home/ubuntu/repo/chat_app_web_testing_playwright 
+        npx playwright show-report
+        ;;
     "connect")
         # test ssh connection
         echo "TestMachine is connecting..."
