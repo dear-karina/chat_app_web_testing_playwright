@@ -6,7 +6,7 @@ test.beforeEach(async ({ page, context }) => {
   const pageTemp = await context.newPage();
   await pageTemp.goto(ChatAppEndpoints.HOME);
   await page.goto(ChatAppEndpoints.HOME);
-  await page.reload();
+  // await page.reload();
 });
 
 test.describe("Login - UI Testing", { tag: ["@login"] }, () => {
