@@ -7,6 +7,7 @@ test.beforeEach(async ({ page, loginPage, context }) => {
   // await page.goto(ChatAppEndpoints.HOME);
   // await page.reload();
   // await loginPage.login("hongducdev", "123456");
+  await new Promise((resolve) => setTimeout(resolve, 5000));
 });
 
 test.describe(

@@ -8,6 +8,7 @@ test(
   "chat between 2 accounts, one with Chrome and one with Firefox",
   { tag: ["@chat", "@positive"] },
   async () => {
+    await new Promise((resolve) => setTimeout(resolve, 5000));
     // test.setTimeout(60000);
     // // Launch Chromium and Firefox browsers
     // const browserA = await chromium.launch();

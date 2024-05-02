@@ -7,6 +7,7 @@ test.beforeEach(async ({ page, context }) => {
   // await pageTemp.goto(ChatAppEndpoints.HOME);
   // await page.goto(ChatAppEndpoints.HOME);
   // await page.reload();
+  await new Promise((resolve) => setTimeout(resolve, 5000));
 });
 
 test.describe("Login - UI Testing", { tag: ["@login"] }, () => {

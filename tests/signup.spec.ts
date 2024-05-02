@@ -9,6 +9,7 @@ test.beforeEach(async ({ page, loginPage, context }) => {
   // await page.reload();
   // await loginPage.clickSignupLink();
   // await expect(page).toHaveURL(ChatAppEndpoints.SIGNUP);
+  await new Promise((resolve) => setTimeout(resolve, 5000));
 });
 
 test.describe("Sign Up - UI Testing", { tag: ["@signup"] }, () => {
