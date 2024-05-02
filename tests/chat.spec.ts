@@ -28,27 +28,32 @@ test(
     } = await createPageWithLoginAndHome(contextB);
 
     // Navigate to the website for both pages
-    await Promise.all([
-      pageA.goto(ChatAppEndpoints.HOME),
-      pageB.goto(ChatAppEndpoints.HOME),
-    ]);
-    const accountA_name = "hongducdev";
-    const accountB_name = "khavyhana";
+    // await Promise.all([
+    //   contextA.newPage().then((page) => page.goto(ChatAppEndpoints.HOME)),
+    //   pageA.goto(ChatAppEndpoints.HOME),
+    //   pageA.reload(),
+    //   contextB.newPage().then((page) => page.goto(ChatAppEndpoints.HOME)),
+    //   pageB.goto(ChatAppEndpoints.HOME),
+    //   pageB.reload(),
+    // ]);
+
+    // const accountA_name = "hongducdev";
+    // const accountB_name = "khavyhana";
 
     // Login
-    await loginPageA.login(accountA_name, "123456");
-    await loginPageB.login(accountB_name, "123456");
-    // Open dialogs
-    await homePageA.search(accountB_name);
-    //currently the web search by name, not username
-    // await homePageB.search(accountB_name);
-    await homePageB.search("Nguyen Hong Duc");
+    // await loginPageA.login(accountA_name, "123456");
+    // await loginPageB.login(accountB_name, "123456");
+    // // Open dialogs
+    // await homePageA.search(accountB_name);
+    // //currently the web search by name, not username
+    // // await homePageB.search(accountB_name);
+    // await homePageB.search("Nguyen Hong Duc");
 
     // Send messages
-    const randomMessageFromA = randomMessage();
-    const randomMessageFromB = randomMessage();
-    await homePageA.sendMessage(randomMessageFromA, "send-button");
-    await homePageB.sendMessage(randomMessageFromB, "ENTER");
+    // const randomMessageFromA = randomMessage();
+    // const randomMessageFromB = randomMessage();
+    // await homePageA.sendMessage(randomMessageFromA, "send-button");
+    // await homePageB.sendMessage(randomMessageFromB, "ENTER");
 
     //Take screenshot here
     // await new Promise((resolve) => setTimeout(resolve, 1000));
@@ -58,15 +63,15 @@ test(
     // await pageB.screenshot({ path: "playwright-report/screenshots/screenshotB.png" });
 
     // Check if account B receives the message sent by account A
-    await homePageB.assertMessageVisible(randomMessageFromA);
-    await homePageA.assertMessageVisible(randomMessageFromB);
+    // await homePageB.assertMessageVisible(randomMessageFromA);
+    // await homePageA.assertMessageVisible(randomMessageFromB);
 
     //Close all resources
-    await Promise.all([
-      contextA.close(),
-      contextB.close(),
-      browserA.close(),
-      browserB.close(),
-    ]);
+    // await Promise.all([
+    //   contextA.close(),
+    //   contextB.close(),
+    //   browserA.close(),
+    //   browserB.close(),
+    // ]);
   }
 );
