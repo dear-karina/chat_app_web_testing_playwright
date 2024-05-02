@@ -19,6 +19,12 @@ case "$1" in
         cd /home/ubuntu/repo/chat_app_web_testing_playwright 
         npx playwright show-report
         ;;
+    "update")
+        # run the tests
+        echo "TestMachine is running the tests...."
+        cd /home/ubuntu/repo/chat_app_web_testing_playwright 
+        git pull
+        ;;
     "connect")
         # test ssh connection
         echo "TestMachine is connecting..."
