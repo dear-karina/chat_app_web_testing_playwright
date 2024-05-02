@@ -21,7 +21,7 @@ case "$1" in
         ;;
     "update")
         # run the tests
-        echo "TestMachine is running the tests...."
+        echo "TestMachine is updating repo...."
         cd /home/ubuntu/repo/chat_app_web_testing_playwright 
         git pull
         ;;
