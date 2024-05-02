@@ -3,9 +3,9 @@ import { ChatAppEndpoints } from "../constants/endpoints";
 import { negativeTests, positiveTest } from "../data/login.data";
 
 test.beforeEach(async ({ page, context }) => {
-  const pageTemp = await context.newPage();
-  await pageTemp.goto(ChatAppEndpoints.HOME);
-  await page.goto(ChatAppEndpoints.HOME);
+  // const pageTemp = await context.newPage();
+  // await pageTemp.goto(ChatAppEndpoints.HOME);
+  // await page.goto(ChatAppEndpoints.HOME);
   // await page.reload();
 });
 

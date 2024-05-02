@@ -3,9 +3,9 @@ import { ChatAppEndpoints } from "../constants/endpoints";
 import { negativeTests, positiveTests } from "../data/signup.data";
 
 test.beforeEach(async ({ page, loginPage, context }) => {
-  const pageTemp = await context.newPage();
-  await pageTemp.goto(ChatAppEndpoints.HOME);
-  await page.goto(ChatAppEndpoints.HOME);
+  // const pageTemp = await context.newPage();
+  // await pageTemp.goto(ChatAppEndpoints.HOME);
+  // await page.goto(ChatAppEndpoints.HOME);
   // await page.reload();
   // await loginPage.clickSignupLink();
   // await expect(page).toHaveURL(ChatAppEndpoints.SIGNUP);
