@@ -1,4 +1,4 @@
-const SOURCE = "https://chatapppreview.hongduccodedao.id.vn";
+const SOURCE = "https://chatapppreview.hongduccodedao.io.vn";
 
 export const ChatAppEndpoints = {
   LOGIN: `${SOURCE}/login`,
