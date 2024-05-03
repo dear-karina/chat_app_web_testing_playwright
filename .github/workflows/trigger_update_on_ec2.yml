@@ -14,6 +14,6 @@ jobs:
           node-version: lts/*
       - name: trigger update
         run: |
-          echo "$SSH_KEY" > id_rsa
-          chmod 600 id_rsa
-          ssh id_rsa root@122.248.203.166 'bash command.sh update'
+          echo "$SSH_KEY" > key.pem
+          chmod 600 key.pem
+          ssh -i key.pem root@122.248.203.166 'bash command.sh update'
