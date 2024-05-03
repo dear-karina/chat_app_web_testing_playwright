@@ -16,4 +16,4 @@ jobs:
         run: |
           echo "$SSH_KEY" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-          ssh root@122.248.203.166 'bash command.sh update'
+          ssh ~/.ssh/id_rsa root@122.248.203.166 'bash command.sh update'
