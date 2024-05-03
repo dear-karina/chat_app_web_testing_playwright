@@ -1,0 +1,19 @@
+name: Update Repo on EC2 Machine
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+jobs:
+  update:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: lts/*
+      - name: trigger update
+        run: |
+          echo "$SSH_KEY" > ~/.ssh/id_rsa
+          chmod 600 ~/.ssh/id_rsa
+          ssh root@122.248.203.166 'bash command.sh update'
